@@ -5,7 +5,6 @@ var FILE_NAME = 'sound-machine';
 
 events.event('change');
 
-var changeCount = 0;
 
 function load(){
     var settings = configuration.readSettings(FILE_NAME);
@@ -24,18 +23,13 @@ function load(){
         };
         save(settings);
     }
-    settings.changeCount = 0;
-    changeCount = 0;
     events.change(settings);
 }
 
 
 function save(settings){
-    if(changeCount !== settings.changeCount){
         configuration.saveSettings(FILE_NAME, settings);
-        changeCount = settings.changeCount;
         events.change(settings);
-    }
 }
 
 module.exports = {

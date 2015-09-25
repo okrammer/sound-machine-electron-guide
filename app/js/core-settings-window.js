@@ -35,7 +35,6 @@ ipc.on('settings-window-close', function (event, settings) {
     if (settingsWindow) {
         settingsWindow.close();
     }
-    settings.changeCount += 1;
     events.updateSettings(settings);
 });
 

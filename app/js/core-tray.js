@@ -10,12 +10,6 @@ events.event('say');
 events.event('close');
 events.event('openSettings');
 
-console.log(events.onSay);
-
-function registerCallback(){
-
-}
-
 function updateSettings(settings) {
     if(!trayIcon) {
         if (process.platform === 'darwin') {
