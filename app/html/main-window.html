@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en" ng-app="main-window">
+<head>
+    <meta charset="UTF-8">
+    <title>Sound Machine</title>
+    <link href="../css/bootstrap.css" rel="stylesheet" type="text/css"/>
+    <link href="../css/main-window.css" rel="stylesheet" type="text/css"/>
+</head>
+<body ng-controller="MainController">
+<div class="settings" ng-click="openSettingsWindow()">Settings</div>
+<div class="close" ng-click="close()">Close</div>
+<div id="main" class="container-fluid">
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="speaker">
+                <img src="../img/speaker.png"/>
+            </div>
+            <h1>
+                <img src="../img/logo.png"/>
+            </h1>
+        </div>
+    </div>
+    <div class="row buttons" ng-repeat="row in rows">
+
+        <div class="col-xs-4" ng-repeat="quote in row">
+            <div style="font-size: smaller">{{quote.label}}</div>
+            <div class="button-sound" id="quote_{{quote.index}}" ng-click="say(quote)">
+                <span class="button-icon"></span>
+                <span ng-if="quote.index < 9" style="padding-left: 8px">{{quote.index + 1}}</span>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<script src="../js/angular.js"></script>
+<script src="../js/ui-main-window.js"></script>
+</body>
+</html>

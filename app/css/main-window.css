@@ -42,7 +42,8 @@ body {
 }
 
 .buttons > div {
-    text-align: center;
+
+    color: white;
 }
 
 .button-sound {
@@ -51,7 +52,7 @@ body {
     cursor: pointer;
     display: inline-block;
     height: 24px;
-    margin-top: 57px;
+    /*margin-top: 57px;*/
     position: relative;
     width: 24px;
     box-shadow: 0 4px 0 #044D7F;

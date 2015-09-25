@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en" ng-app="settings-window">
+<head>
+    <meta charset="UTF-8">
+    <title>Sound Machine Settings</title>
+    <link href="../css/bootstrap.css" rel="stylesheet" type="text/css"/>
+    <link href="../css/settings-window.css" rel="stylesheet" type="text/css"/>
+</head>
+<body ng-controller="MainController">
+    <div class="close" ng-click="close()">Close</div>
+    <div id="settings-screen" class="container-fluid">
+        <div class="row">
+            <div class="col-xs-12">
+                <h2>Settings</h2>
+
+                <p>Modifier keys for global shortcuts</p>
+
+                <p>
+                    <input type="checkbox" class="global-shortcut" id="global-shortcut-ctrl"
+                           ng-model="key_ctrl"/>
+                    <label for="global-shortcut-ctrl">Ctrl</label>
+                </p>
+
+                <p>
+                    <input type="checkbox" class="global-shortcut" id="global-shortcut-shift"
+                           ng-model="key_shift"/>
+                    <label for="global-shortcut-shift">Shift</label>
+                </p>
+
+                <p>
+                    <input type="checkbox" class="global-shortcut" id="global-shortcut-alt"
+                           ng-model="key_alt"/>
+                    <label for="global-shortcut-alt">Alt</label>
+                </p>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-xs-12">
+                <h2>Command</h2>
+
+                <p>The command of speech synthesizer</p>
+                <p>eg. say "<em>$TEXT$</em> -v "<em>$VOICE$</em>"</p>
+                <input class="form-control" placeholder="Command" type="text" ng-model="command">
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="col-xs-12">
+                <h2>Quotes</h2>
+
+                <p>Quotes you like to use</p>
+            </div>
+        </div>
+
+
+        <div class="row" ng-repeat="quote in quotes track by quote.id">
+            <div class="col-xs-2">
+                <input class="form-control" placeholder="No." type="text" ng-model="quote.index">
+            </div>
+            <div class="col-xs-3">
+                <input class="form-control" placeholder="Label" type="text" ng-model="quote.label">
+            </div>
+            <div class="col-xs-3">
+                <input class="form-control" placeholder="Text" type="text" ng-model="quote.text">
+            </div>
+            <div class="col-xs-2">
+                <input class="form-control" placeholder="Text" type="text" ng-model="quote.voice">
+            </div>
+            <div class="col-xs-2">
+                <a href="#" class="btn btn-danger  btn-xs" ng-click="remove($index)">remove</a>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-xs-2">
+            </div>
+            <div class="col-xs-3">
+                <input class="form-control" placeholder="Label" type="text" ng-model="label">
+            </div>
+            <div class="col-xs-3">
+                <input class="form-control" type="text" placeholder="Text" ng-model="text">
+            </div>
+            <div class="col-xs-2">
+                <input class="form-control" placeholder="Voice" type="text" ng-model="voice">
+            </div>
+            <div class="col-xs-2">
+                <a class="btn btn-default btn-xs" href="#" ng-click="add()">add</a>
+            </div>
+        </div>
+
+    </div>
+
+<script src="../js/angular.js"></script>
+<script src="../js/ui-settings-window.js"></script>
+</body>
+</html>

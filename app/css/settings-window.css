@@ -19,8 +19,13 @@ label {
     -webkit-app-region: no-drag;
 }
 
+a {
+    -webkit-app-region: no-drag;
+}
+
+
 input {
-    padding: 10px;
+    color: black;
 }
 
 .close {
