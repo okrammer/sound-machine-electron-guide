@@ -1,9 +1,9 @@
 'use strict';
 
 var ipc = require('ipc');
+var angular = require('angular');
 
 angular.module('settings-window', []).controller('MainController', function ($scope) {
-
 
     function update(settings) {
         $scope.quotes = settings.quotes || [];
@@ -18,9 +18,7 @@ angular.module('settings-window', []).controller('MainController', function ($sc
         $scope.key_alt = shortcuts.indexOf('alt') !== -1;
         $scope.key_ctrl = shortcuts.indexOf('ctrl') !== -1;
         $scope.key_shift = shortcuts.indexOf('shift') !== -1;
-
     }
-
 
     function createSettings() {
         var shortcuts = [];

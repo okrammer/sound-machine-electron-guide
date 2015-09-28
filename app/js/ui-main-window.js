@@ -1,6 +1,7 @@
 'use strict';
 
 var ipc = require('ipc');
+var angular = require('angular');
 
 
 angular.module('main-window', []).controller('MainController', function ($scope) {

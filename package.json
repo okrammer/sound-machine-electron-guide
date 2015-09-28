@@ -11,6 +11,7 @@
     "electron-prebuilt": "^0.30.3"
   },
   "dependencies": {
+    "angular": "1.4.x",
     "electron-safe-ipc": "^0.6.1",
     "nconf": "^0.7.2"
   }
