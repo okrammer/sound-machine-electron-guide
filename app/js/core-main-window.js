@@ -1,13 +1,10 @@
 
 var ipc = require('ipc');
 var BrowserWindow = require('browser-window');
-var events = require('./core-events.js').create();
+var events = require('./core-events.js').create('openSettings', 'say', 'close');
 
 var lastSettings;
 var mainWindow = null;
-events.event('openSettings');
-events.event('say');
-events.event('close');
 
 function open() {
     if(mainWindow){

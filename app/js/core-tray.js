@@ -2,13 +2,9 @@
 var Menu = require('menu');
 var Tray = require('tray');
 var path = require('path');
-var events = require('./core-events.js').create();
+var events = require('./core-events.js').create('say', 'close', 'openSettings');
 
 var trayIcon;
-
-events.event('say');
-events.event('close');
-events.event('openSettings');
 
 function updateSettings(settings) {
     if(!trayIcon) {

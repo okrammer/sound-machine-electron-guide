@@ -1,18 +1,22 @@
-//var remote = require('remote');
-var configuration = require('../../configuration');
-var events = require('./core-events.js').create();
-var FILE_NAME = 'sound-machine';
+'use strict';
+var events = require('./core-events.js').create('change');
+var nconf = require('nconf').file({file: getUserHome() + '/sound-machine-config.json'});
 
-events.event('change');
+var NAME = 'sound-machine';
 
+function getUserHome() {
+    return process.env[(process.platform == 'win32') ? 'USERPROFILE' : 'HOME'];
+}
 
 function load(){
-    var settings = configuration.readSettings(FILE_NAME);
+    nconf.load();
+    var settings = nconf.get(NAME);
     if (!settings) {
         settings = {
             shortcuts: ['ctrl', 'shift'],
             quotes: [
                 {
+                    id: new Date().getTime(),
                     index: 0,
                     label: 'hello',
                     text: 'Hallo World!',
@@ -28,12 +32,13 @@ function load(){
 
 
 function save(settings){
-        configuration.saveSettings(FILE_NAME, settings);
+    nconf.set(NAME, settings);
+    nconf.save();
         events.change(settings);
 }
 
 module.exports = {
     load: load,
     save: save,
-    onChange: events.onChange,
+    onChange: events.onChange
 };

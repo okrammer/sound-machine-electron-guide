@@ -1,8 +1,5 @@
 var globalShortcut = require('global-shortcut');
-var events = require('./core-events.js').create();
-
-var sayFunction;
-events.event('say');
+var events = require('./core-events.js').create('say');
 
 function updateSettings(settings) {
     globalShortcut.unregisterAll();
@@ -14,7 +11,7 @@ function updateSettings(settings) {
         (function(i){
             globalShortcut.register(shortcutPrefix + (i+1), function () {
                 var quote = settings.quotes[i];
-                sayFunction(quote)
+                events.say(quote)
             });
         }(i));
     }

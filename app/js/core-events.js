@@ -1,10 +1,14 @@
 //var remote = require('remote');
 
 
-function create(){
+function create(events/* varargs */){
 
     var obj = {};
     var listeners = {};
+
+    for(var i = 0; i < arguments.length; i ++){
+        registerEvent(arguments[i]);
+    }
 
     function methodName(prefix, eventName){
         return prefix + eventName.substr(0, 1).toUpperCase() + eventName.substr(1, eventName.length -1);
@@ -25,7 +29,8 @@ function create(){
             listenerList.push(listener);
         };
     }
-    obj.event = registerEvent;
+
+
 
     return obj;
 }

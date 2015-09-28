@@ -1,12 +1,10 @@
 
 var ipc = require('ipc');
 var BrowserWindow = require('browser-window');
-var events = require('./core-events.js').create();
+var events = require('./core-events.js').create('updateSettings');
 
 var lastSettings;
 var settingsWindow = null;
-
-events.event('updateSettings');
 
 function open() {
     if (settingsWindow) {
