@@ -11,19 +11,24 @@ var settingsWindow = require('./app/js/core-settings-window.js');
 
 
 app.on('ready', function () {
-    shortcuts.onSay(speech.say);
     tray.onOpenSettings(settingsWindow.open);
     tray.onSay(speech.say);
     tray.onClose(close);
+
+    shortcuts.onSay(speech.say);
+
     mainWindow.onOpenSettings(settingsWindow.open);
     mainWindow.onSay(speech.say);
     mainWindow.onClose(close);
+
     settingsWindow.onUpdateSettings(config.save);
-    config.onChange(function (settings) {
-        [speech, tray, shortcuts, mainWindow, settingsWindow].forEach(function (module) {
-            module.updateSettings(settings);
-        });
-    });
+
+    config.onChange(speech.updateSettings);
+    config.onChange(tray.updateSettings);
+    config.onChange(shortcuts.updateSettings);
+    config.onChange(mainWindow.updateSettings);
+    config.onChange(settingsWindow.updateSettings);
+
     config.load();
     mainWindow.open();
 });
